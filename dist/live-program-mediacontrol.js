@@ -2284,7 +2284,8 @@ var LiveProgramMediaControl = function (_MediaControl) {
   _createClass(LiveProgramMediaControl, [{
     key: '_setProgram',
     value: function _setProgram(program) {
-      this._program = program || {};
+      !program && (program = {});
+      this._program = {};
       this._program.title = program.title || '';
       this._program.startAt = program.startAt || '00:00';
       this._program.endAt = program.endAt || '00:00';
