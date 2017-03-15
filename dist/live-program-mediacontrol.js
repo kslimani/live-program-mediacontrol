@@ -2274,18 +2274,29 @@ var LiveProgramMediaControl = function (_MediaControl) {
     _this._liveProgramLeft = 0;
     _this._liveProgramWidth = 0;
 
-    _this._program = _clappr.$.isPlainObject(options.liveProgramMediaControl.program) ? options.liveProgramMediaControl.program : { startAt: '00:00', endAt: '00:00', progress: 0, title: '' };
-
-    _this._progressColor = options.liveProgramMediaControl && options.liveProgramMediaControl.progressColor || null;
-    _this._paddingWidth = options.liveProgramMediaControl && options.liveProgramMediaControl.paddingWidth || 18;
+    var pluginOpts = options.liveProgramMediaControl;
+    _this._setProgram(pluginOpts.program);
+    _this._progressColor = pluginOpts && pluginOpts.progressColor || null;
+    _this._paddingWidth = pluginOpts && pluginOpts.paddingWidth || 18;
     return _this;
   }
 
-  // get isLiveWithoutDVR() {
-  //   return this.container && this.container.getPlaybackType() === Playback.LIVE && !this.container.isDvrInUse()
-  // }
-
   _createClass(LiveProgramMediaControl, [{
+    key: '_setProgram',
+    value: function _setProgram(program) {
+      program || (program = {});
+      program.title || (program.title = '');
+      program.startAt || (program.startAt = '00:00');
+      program.endAt || (program.endAt = '00:00');
+      program.progress || (program.progress = 0);
+      this._program = program;
+    }
+
+    // get isLiveWithoutDVR() {
+    //   return this.container && this.container.getPlaybackType() === Playback.LIVE && !this.container.isDvrInUse()
+    // }
+
+  }, {
     key: 'resizeLiveProgram',
     value: function resizeLiveProgram(size) {
       if (!this.$liveProgram) {
@@ -2366,11 +2377,7 @@ var LiveProgramMediaControl = function (_MediaControl) {
   }, {
     key: 'setLiveProgram',
     value: function setLiveProgram(program) {
-      // Assume object has expected properties
-      if (!program || !program.title) {
-        return this;
-      }
-      this._program = program;
+      this._setProgram(program);
       this.updateLiveProgram();
       return this;
     }
