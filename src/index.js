@@ -17,12 +17,19 @@ export default class LiveProgramMediaControl extends MediaControl {
     this._liveProgramLeft = 0
     this._liveProgramWidth = 0
 
-    this._program = $.isPlainObject(options.liveProgramMediaControl.program)
-      ? options.liveProgramMediaControl.program
-      : { startAt: '00:00', endAt: '00:00', progress: 0, title: '' }
+    let pluginOpts = options.liveProgramMediaControl
+    this._setProgram(pluginOpts.program)
+    this._progressColor = pluginOpts && pluginOpts.progressColor || null
+    this._paddingWidth = pluginOpts && pluginOpts.paddingWidth || 18
+  }
 
-    this._progressColor = options.liveProgramMediaControl && options.liveProgramMediaControl.progressColor || null
-    this._paddingWidth = options.liveProgramMediaControl && options.liveProgramMediaControl.paddingWidth || 18
+  _setProgram(program) {
+    program || (program = {})
+    program.title || (program.title = '')
+    program.startAt || (program.startAt = '00:00')
+    program.endAt || (program.endAt = '00:00')
+    program.progress || (program.progress = 0)
+    this._program = program
   }
 
   // get isLiveWithoutDVR() {
@@ -104,11 +111,7 @@ export default class LiveProgramMediaControl extends MediaControl {
    * @return {LiveProgramMediaControl} itself
    */
   setLiveProgram(program) {
-    // Assume object has expected properties
-    if (!program || !program.title) {
-      return this
-    }
-    this._program = program
+    this._setProgram(program)
     this.updateLiveProgram()
     return this
   }
