@@ -24,12 +24,11 @@ export default class LiveProgramMediaControl extends MediaControl {
   }
 
   _setProgram(program) {
-    program || (program = {})
-    program.title || (program.title = '')
-    program.startAt || (program.startAt = '00:00')
-    program.endAt || (program.endAt = '00:00')
-    program.progress || (program.progress = 0)
-    this._program = program
+    this._program = program || {}
+    this._program.title = program.title || ''
+    this._program.startAt = program.startAt || '00:00'
+    this._program.endAt = program.endAt || '00:00'
+    this._program.progress = program.progress || 0
   }
 
   // get isLiveWithoutDVR() {
