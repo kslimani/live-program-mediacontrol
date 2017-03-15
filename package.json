@@ -1,0 +1,27 @@
+{
+  "name": "live-program-mediacontrol",
+  "version": "0.0.1",
+  "description": "Live stream only custom mediacontrol for Clappr player.",
+  "author": "kslimani",
+  "license": "MIT",
+  "main": "dist/live-program-mediacontrol.js",
+  "scripts": {
+    "build": "webpack --progress",
+    "dist": "webpack --progress",
+    "release": "npm run build && npm run dist",
+    "start": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.22.0",
+    "compass-mixins": "^0.12.10",
+    "css-loader": "^0.27.3",
+    "node-sass": "^4.5.0",
+    "sass-loader": "^6.0.3",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-notifier": "^1.5.0"
+  }
+}
