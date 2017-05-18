@@ -2316,9 +2316,9 @@ var LiveProgramMediaControl = function (_MediaControl) {
       }
 
       // Calculate live program bar position and width
-      var mediaControlWidth = size && size.width ? size.width : this.$el.width();
-      if (mediaControlWidth > 0 && this._leftPanelWidth > 0 && this._rightPanelWidth > 0) {
-        var w = mediaControlWidth - this._leftPanelWidth - this._rightPanelWidth;
+      var layerWidth = this.$layer.width();
+      if (layerWidth > 0 && this._leftPanelWidth > 0) {
+        var w = layerWidth - this._leftPanelWidth - this._rightPanelWidth;
         if (w > 0) {
           this._liveProgramLeft = this._leftPanelWidth;
           this._liveProgramWidth = w;
@@ -2337,6 +2337,8 @@ var LiveProgramMediaControl = function (_MediaControl) {
       // if (!this.isLiveWithoutDVR) {
       //   return
       // }
+
+      this.$layer = this.$el.find('.media-control-layer');
 
       this.$progressBar = (0, _clappr.$)("<div />").addClass("live-program-progress-bar").attr('data-media-control', '');
       this.$progressBarBg = (0, _clappr.$)("<div />").addClass("live-program-progress-bar-bg").attr('data-media-control', '');
