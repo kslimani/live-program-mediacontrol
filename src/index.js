@@ -54,9 +54,9 @@ export default class LiveProgramMediaControl extends MediaControl {
     }
 
     // Calculate live program bar position and width
-    const mediaControlWidth = size && size.width ? size.width : this.$el.width()
-    if (mediaControlWidth > 0 && this._leftPanelWidth > 0 && this._rightPanelWidth > 0) {
-      const w = mediaControlWidth - this._leftPanelWidth - this._rightPanelWidth
+    const layerWidth = this.$layer.width()
+    if (layerWidth > 0 && this._leftPanelWidth > 0) {
+      const w = layerWidth - this._leftPanelWidth - this._rightPanelWidth
       if (w > 0) {
         this._liveProgramLeft = this._leftPanelWidth
         this._liveProgramWidth = w
@@ -74,6 +74,8 @@ export default class LiveProgramMediaControl extends MediaControl {
     // if (!this.isLiveWithoutDVR) {
     //   return
     // }
+
+    this.$layer = this.$el.find('.media-control-layer')
 
     this.$progressBar = $("<div />").addClass("live-program-progress-bar").attr('data-media-control', '')
     this.$progressBarBg = $("<div />").addClass("live-program-progress-bar-bg").attr('data-media-control', '')
