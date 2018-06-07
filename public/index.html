@@ -2,7 +2,8 @@
   <head>
     <meta name="viewport" content="width=655, user-scalable=yes" />
     <title>Plugin demo page</title>
-    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/clappr/latest/clappr.min.js"></script>
+    <!-- <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@0.2.87/dist/clappr.min.js"></script> -->
+    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="live-program-mediacontrol.js"></script>
   </head>
   <body>
@@ -21,6 +22,7 @@
     <script type="text/javascript">
 
       // Clappr.Log.setLevel(0)
+      console.log('Clappr version ' + Clappr.version);
 
       var JELLY = 'http://wowza.jwplayer.com/live/jelly.stream/playlist.m3u8'
 
