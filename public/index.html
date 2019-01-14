@@ -2,8 +2,8 @@
   <head>
     <meta name="viewport" content="width=655, user-scalable=yes" />
     <title>Plugin demo page</title>
-    <!-- <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@0.2.87/dist/clappr.min.js"></script> -->
-    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@0.2.100/dist/clappr.min.js"></script>
+    <!-- <script type="text/javascript" charset="utf-8" src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script> -->
     <script type="text/javascript" charset="utf-8" src="live-program-mediacontrol.js"></script>
   </head>
   <body>
@@ -24,7 +24,7 @@
       // Clappr.Log.setLevel(0)
       console.log('Clappr version ' + Clappr.version);
 
-      var JELLY = 'http://wowza.jwplayer.com/live/jelly.stream/playlist.m3u8'
+      var LIVESOURCE = 'https://ec.playmedia.fr/beblack/africa/playlist.m3u8'
 
       // Note: Program bar is not displayed in mediacontrol if title is empty
       function getProgram() {
@@ -43,7 +43,7 @@
         autoSeekFromUrl: false,
         width: 640,
         height: 360,
-        source: JELLY,
+        source: LIVESOURCE,
         autoPlay: true,
         playback: {
           playInline: true,
