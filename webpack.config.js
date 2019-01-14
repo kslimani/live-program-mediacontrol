@@ -1,25 +1,32 @@
-// Webpack 2 configuration
+// Webpack 4 configuration
 const path = require('path')
 const webpack = require('webpack')
-const NotifierPlugin = require('webpack-notifier')
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const NotifierPlugin = require('webpack-build-notifier')
 
-var outputFile, plugins = []
+var name = 'live-program-mediacontrol'
+var outputFile, plugins = [], optimization = {}
 
 if (process.env.npm_lifecycle_event === 'dist') {
-  outputFile = 'live-program-mediacontrol.min.js'
-  plugins.push(new webpack.optimize.UglifyJsPlugin({
-    output: {
-      comments: false,
-    },
-  }))
+  outputFile = name + '.min.js'
+  optimization.minimizer = [
+    new UglifyJsPlugin({
+      cache: true,
+      parallel: true,
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+      }
+    }),
+  ]
 } else {
-  outputFile = 'live-program-mediacontrol.js'
+  outputFile = name + '.js'
+  optimization.minimize = false
 }
 
 plugins.push(new NotifierPlugin({
-  title: outputFile,
-  alwaysNotify: true,
-  // contentImage: path.resolve(__dirname, 'path/to/image.png')
+  title: optimization.minimizer ? 'minified ' + name : name,
 }))
 
 module.exports = {
@@ -30,18 +37,17 @@ module.exports = {
     library: 'LiveProgramMediaControl',
     libraryTarget: 'umd',
   },
+  optimization: optimization,
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader'
+        },
         include: [
           path.resolve(__dirname, 'src')
         ],
-        options: {
-          presets: ['es2015'],
-          plugins: ['add-module-exports'],
-        },
       },
       {
         test: /\.sass$/,
@@ -75,6 +81,7 @@ module.exports = {
       path.resolve(__dirname, "public"),
     ],
     // publicPath: '/js/',
+    disableHostCheck: true, // https://github.com/webpack/webpack-dev-server/issues/882
     compress: true,
     host: "0.0.0.0",
     port: 8080
