@@ -1,4 +1,4 @@
-import {Utils, MediaControl, Styler, Playback, Browser, $} from 'clappr'
+import {Utils, Events, MediaControl, Styler, Playback, Browser, $} from 'clappr'
 import liveProgramStyle from './styles.sass'
 
 /**
@@ -8,8 +8,8 @@ import liveProgramStyle from './styles.sass'
  * @extends MediaControl
  */
 export default class LiveProgramMediaControl extends MediaControl {
-  constructor(options) {
-    super(options)
+  constructor(core) {
+    super(core)
     this._seekBarHidden = false
     this._setSeekBarHidden = !Browser.isiOS // Fix seekbar scrubber on iPhone
     this._leftPanelWidth = 0
@@ -17,7 +17,7 @@ export default class LiveProgramMediaControl extends MediaControl {
     this._liveProgramLeft = 0
     this._liveProgramWidth = 0
 
-    let pluginOpts = options.liveProgramMediaControl
+    let pluginOpts = this.options.liveProgramMediaControl
     this._setProgram(pluginOpts.program)
     this._progressColor = pluginOpts && pluginOpts.progressColor || null
     this._paddingWidth = pluginOpts && pluginOpts.paddingWidth || 18
@@ -119,7 +119,7 @@ export default class LiveProgramMediaControl extends MediaControl {
   }
 
   updateLiveProgram() {
-    if (!this.$liveProgram) {
+    if (!this.$liveProgram || !this._program) {
       return
     }
 
@@ -134,6 +134,18 @@ export default class LiveProgramMediaControl extends MediaControl {
     } else {
       this.$liveProgram.show()
     }
+  }
+
+  // @override
+  bindEvents() {
+    super.bindEvents()
+    this.listenTo(this.core, Events.CORE_FULLSCREEN, (evt) => {
+      // Ensure resizeLiveProgram() is called after browser entered
+      // or exited fullscreen mode
+      process.nextTick(() => {
+        this.resizeLiveProgram()
+      })
+    })
   }
 
   // @override

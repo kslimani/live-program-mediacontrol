@@ -1,6 +1,8 @@
 # live-program-mediacontrol
 
-Note: Clappr version 0.3.0 and greater is not supported.
+Live stream only custom mediacontrol for Clappr player 0.3.x and greater. (see previous versions for Clappr 0.2.x)
+
+## development
 
 ```shell
 $ yarn && yarn start
