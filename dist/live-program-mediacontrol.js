@@ -101,6 +101,8 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -112,27 +114,29 @@ var _styles = _interopRequireDefault(__webpack_require__(3));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _get(target, property, receiver) { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get; } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(receiver); } return desc.value; }; } return _get(target, property, receiver || target); }
 
 function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 /**
  * A live stream only mediacontrol which display current program.
@@ -140,17 +144,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
  * @constructor
  * @extends MediaControl
  */
-var LiveProgramMediaControl =
-/*#__PURE__*/
-function (_MediaControl) {
+var LiveProgramMediaControl = /*#__PURE__*/function (_MediaControl) {
   _inherits(LiveProgramMediaControl, _MediaControl);
+
+  var _super = _createSuper(LiveProgramMediaControl);
 
   function LiveProgramMediaControl(core) {
     var _this;
 
     _classCallCheck(this, LiveProgramMediaControl);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(LiveProgramMediaControl).call(this, core));
+    _this = _super.call(this, core);
     _this._seekBarHidden = false;
     _this._setSeekBarHidden = !_clappr.Browser.isiOS; // Fix seekbar scrubber on iPhone
 
@@ -584,9 +588,13 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(false);
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(4);
+exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, ".live-program[data-media-control]{position:absolute;left:100px;bottom:8px;display:inline-block;width:50%;height:16px}.live-program[data-media-control] .live-program-start[data-media-control]{position:absolute;left:0px;top:0px;width:40px;height:100%;font-size:10px;color:#fff;text-align:center;line-height:16px}.live-program[data-media-control] .live-program-end[data-media-control]{position:absolute;right:0px;top:0px;width:40px;height:100%;font-size:10px;color:#fff;text-align:center;line-height:16px}.live-program[data-media-control] .live-program-bar[data-media-control]{position:absolute;top:0px;left:0px;width:100%;height:100%;padding:5px 40px}.live-program[data-media-control] .live-program-bar[data-media-control] .live-program-progress-bar[data-media-control]{position:relative;width:100%;height:100%}.live-program[data-media-control] .live-program-bar[data-media-control] .live-program-progress-bar[data-media-control] .live-program-progress-bar-bg[data-media-control]{position:absolute;top:0;left:0;width:100%;height:6px;background-color:#c2c2c2}.live-program[data-media-control] .live-program-bar[data-media-control] .live-program-progress-bar[data-media-control] .live-program-progress-bar-fill[data-media-control]{position:absolute;top:0;left:0;width:0;height:6px;background-color:#ff0101;-webkit-transition:all .5s ease-out;-moz-transition:all .5s ease-out;-o-transition:all .5s ease-out;transition:all .5s ease-out}\n", ""]);
+// Exports
+module.exports = exports;
 
 
 /***/ }),
@@ -610,7 +618,7 @@ module.exports = function (useSourceMap) {
       var content = cssWithMappingToString(item, useSourceMap);
 
       if (item[2]) {
-        return "@media ".concat(item[2], "{").concat(content, "}");
+        return "@media ".concat(item[2], " {").concat(content, "}");
       }
 
       return content;
@@ -619,7 +627,7 @@ module.exports = function (useSourceMap) {
   // eslint-disable-next-line func-names
 
 
-  list.i = function (modules, mediaQuery) {
+  list.i = function (modules, mediaQuery, dedupe) {
     if (typeof modules === 'string') {
       // eslint-disable-next-line no-param-reassign
       modules = [[null, modules, '']];
@@ -627,30 +635,34 @@ module.exports = function (useSourceMap) {
 
     var alreadyImportedModules = {};
 
-    for (var i = 0; i < this.length; i++) {
-      // eslint-disable-next-line prefer-destructuring
-      var id = this[i][0];
+    if (dedupe) {
+      for (var i = 0; i < this.length; i++) {
+        // eslint-disable-next-line prefer-destructuring
+        var id = this[i][0];
 
-      if (id != null) {
-        alreadyImportedModules[id] = true;
+        if (id != null) {
+          alreadyImportedModules[id] = true;
+        }
       }
     }
 
     for (var _i = 0; _i < modules.length; _i++) {
-      var item = modules[_i]; // skip already imported module
-      // this implementation is not 100% perfect for weird media query combinations
-      // when a module is imported multiple times with different media queries.
-      // I hope this will never occur (Hey this way we have smaller bundles)
+      var item = [].concat(modules[_i]);
 
-      if (item[0] == null || !alreadyImportedModules[item[0]]) {
-        if (mediaQuery && !item[2]) {
-          item[2] = mediaQuery;
-        } else if (mediaQuery) {
-          item[2] = "(".concat(item[2], ") and (").concat(mediaQuery, ")");
-        }
-
-        list.push(item);
+      if (dedupe && alreadyImportedModules[item[0]]) {
+        // eslint-disable-next-line no-continue
+        continue;
       }
+
+      if (mediaQuery) {
+        if (!item[2]) {
+          item[2] = mediaQuery;
+        } else {
+          item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+        }
+      }
+
+      list.push(item);
     }
   };
 
@@ -669,7 +681,7 @@ function cssWithMappingToString(item, useSourceMap) {
   if (useSourceMap && typeof btoa === 'function') {
     var sourceMapping = toComment(cssMapping);
     var sourceURLs = cssMapping.sources.map(function (source) {
-      return "/*# sourceURL=".concat(cssMapping.sourceRoot).concat(source, " */");
+      return "/*# sourceURL=".concat(cssMapping.sourceRoot || '').concat(source, " */");
     });
     return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
   }
