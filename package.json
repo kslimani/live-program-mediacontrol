@@ -9,7 +9,7 @@
     "build": "webpack --progress --mode production",
     "dist": "webpack --progress --mode production",
     "release": "npm run build && npm run dist",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack serve --mode development"
   },
   "devDependencies": {
     "@babel/core": "^7.6",
@@ -21,10 +21,10 @@
     "css-loader": "^3.2",
     "node-sass": "^4.12",
     "sass-loader": "^8.0",
-    "uglifyjs-webpack-plugin": "^2.2",
-    "webpack": "^4.0",
-    "webpack-build-notifier": "^1.1",
-    "webpack-cli": "^3.3",
-    "webpack-dev-server": "^3.8"
+    "terser-webpack-plugin": "^4.2.3",
+    "webpack": "^4.46",
+    "webpack-build-notifier": "^2.1.1",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
