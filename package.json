@@ -18,7 +18,7 @@
     "babel-plugin-add-module-exports": "^1.0",
     "compass-mixins": "^0.12",
     "core-js": "^3.3",
-    "css-loader": "^3.2",
+    "css-loader": "^5.2.4",
     "node-sass": "^4.12",
     "sass-loader": "^8.0",
     "terser-webpack-plugin": "^4.2.3",
