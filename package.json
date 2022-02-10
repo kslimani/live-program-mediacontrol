@@ -19,7 +19,7 @@
     "compass-mixins": "^0.12",
     "core-js": "^3.3",
     "css-loader": "^5.2.4",
-    "node-sass": "^4.12",
+    "node-sass": "^7.0",
     "sass-loader": "^8.0",
     "terser-webpack-plugin": "^4.2.3",
     "webpack": "^4.46",
